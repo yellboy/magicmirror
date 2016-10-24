@@ -1,0 +1,15 @@
+{
+  "name": "calendar-service",
+  "version": "1.0.0",
+  "description": "RESTful API for magic mirror calendar widget.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Caja & Albo",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}
