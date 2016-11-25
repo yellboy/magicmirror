@@ -4,15 +4,17 @@
     angular.module('magicmirror').component('proximityParser', {
         templateUrl: './components/proximity/proximity.html',
         controller: proximityController,
-        bindings: {
-        }
+		transclude: true,
+        bindings: {}
     });
 
     proximityController.$inject = [ 'proximityService' ];
 
     function proximityController(proximityService) {
         var vm = this;
-        
-        vm.proximity = proximityService();
+		
+        proximityService.get().$promise.then(function(data) {
+			vm.proximity = data[0];
+		});
     }
 })();

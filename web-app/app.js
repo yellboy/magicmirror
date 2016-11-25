@@ -1,5 +1,7 @@
 angular.module('magicmirror', [ 'ngResource' ]).controller('mainController', mainController);
 
-function mainController() {
-    this.x = 2;
+mainController.$inject = [ 'proximityService' ];
+
+function mainController(proximityService) {
+    var vm = this;
 }

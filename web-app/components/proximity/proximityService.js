@@ -8,7 +8,7 @@
    proximityService.$inject = [ '$resource' ];
    
    function proximityService($resource) {
-       return $resource('localhost:8888/proximity');
+       return $resource('http://localhost:8888/proximity');
    }
    
 })();
