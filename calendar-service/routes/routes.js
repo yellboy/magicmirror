@@ -23,6 +23,10 @@ function filterFutureEvents(calendarEvents) {
         }
     }
 
+    futureEvents.sort(function(a,b){
+        return Date.parse(a.date) - Date.parse(b.date);
+    });
+
     return futureEvents;
 }
 
