@@ -1,2 +1,10 @@
+import Adafruit_DHT as dht
+
+
 def readTemperature():
-    return 32;
+    h,t = dht.read_retry(dht.DHT22, 4);
+    return t;
+
+def readHumidity():
+    h,t = dht.read_retry(dht.DHT22, 4);
+    return h;
