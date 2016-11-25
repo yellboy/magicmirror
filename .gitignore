@@ -1,4 +1,4 @@
-
+node_modules/
 # Created by https://www.gitignore.io/api/intellij
 
 ### Intellij ###
@@ -52,3 +52,4 @@ fabric.properties
 # .idea/misc.xml
 # *.ipr
 .idea/
+magicmirror.iml
