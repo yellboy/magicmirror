@@ -1,17 +1,32 @@
 var fs = require('fs');
 var calendarEvents = [];
+getCalendarEntries();
 
 var appRouter = function(app) {
     app.get("/", function(req, res){
         res.send("Hello World");
     });
     app.get("/calendar", function(req, res){
-        calendarEntries();
-        res.send(calendarEntries());
+        res.send(filterFutureEvents(calendarEvents));
     });
+};
+
+function filterFutureEvents(calendarEvents) {
+    var futureEvents = [];
+    var now = new Date();
+    var length = calendarEvents.length;
+
+    for (var i = 0; i < length; i++) {
+        var date = Date.parse(calendarEvents[i].date);
+        if (date > now) {
+            futureEvents.push(calendarEvents[i]);
+        }
+    }
+
+    return futureEvents;
 }
 
-function calendarEntries(){
+function getCalendarEntries(){
     var input = fs.createReadStream('./mockedCalendar.txt');
     readLines(input, parseLine);
 
@@ -26,7 +41,7 @@ function readLines(input, func) {
     var index = remaining.indexOf('\r\n');
     while (index > -1) {
       var line = remaining.substring(0, index);
-      remaining = remaining.substring(index + 1);
+      remaining = remaining.substring(index + 2);
       calendarEvents.push(func(line));
       index = remaining.indexOf('\r\n');
     }
