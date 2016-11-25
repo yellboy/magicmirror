@@ -1,2 +1,2 @@
 def readTemperature():
-    return 30;
+    return 32;
