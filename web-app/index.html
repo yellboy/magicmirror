@@ -10,9 +10,9 @@
         <script src="components/calendar/calendarComponent.js"></script>
         <link rel="stylesheet" href="css/main.css" />
     </head>
-    <body ng-app="magicmirror">
+    <body ng-app="magicmirror" ng-controller="mainController">
         <proximity-parser></proximity-parser>
-		<div class="welcome-message">
+		<div id='welcomeMessage' class="welcome-message">
 			Welcome to Zühlke!
 		</div>
         <calendar></calendar>
