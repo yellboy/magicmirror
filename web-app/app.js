@@ -8,8 +8,8 @@ function mainController($interval) {
     };
 
     function fadeInOut() {
-        $("#welcomeMessage").fadeOut(4000);
-        $("#welcomeMessage").fadeIn(4000);
+        $("welcome-message").fadeOut(4000);
+        $("welcome-message").fadeIn(4000);
     }
 
     init();

@@ -8,13 +8,25 @@
         bindings: {}
     });
 
-    proximityController.$inject = [ 'proximityService' ];
+    proximityController.$inject = [ '$timeout', 'proximityService' ];
 
-    function proximityController(proximityService) {
+    function proximityController($timeout, proximityService) {
         var vm = this;
 		
-        proximityService.get().$promise.then(function(data) {
-			vm.proximity = data[0];
-		});
+		vm.shouldDisplayMessage = shouldDisplayMessage;
+		
+		getProximity();
+		
+		function getProximity() {
+			proximityService.get().$promise.then(function(data) {
+				vm.proximity = data[0];
+			
+				$timeout(getProximity, 1000);
+			});
+		}
+		
+		function shouldDisplayMessage() {
+			return vm.proximity <= 1;
+		}
     }
 })();
