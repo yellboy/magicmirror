@@ -4,7 +4,7 @@
     angular.module('magicmirror').component('calendar', {
         // Inline template which is binded to message variable
         // in the component controller
-        template: '<div ng-repeat="e in $ctrl.events">{{e.event}}, {{e.date}} <br/></div>',
+        templateUrl: './components/calendar/calendar.html',
 
         // The controller that handles our component logic
         controller: function ($resource) {

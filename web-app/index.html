@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script data-require="angular.js@1.5.8" data-semver="1.5.8" src="https://code.angularjs.org/1.5.8/angular.js"></script>
         <script data-require="angular.js@1.5.8" data-semver="1.5.8" src="https://code.angularjs.org/1.5.8/angular-resource.js"></script>
         <script src="app.js"></script>
         <script src="components/calendar/calendarComponent.js"></script>
         <link rel="stylesheet" href="css/main.css" />
     </head>
-    <body ng-app="magicmirror">
+    <body ng-app="magicmirror" ng-controller="mainController">
         <proximity-parser></proximity-parser>
+		<div id='welcomeMessage' class="welcome-message">
+			Welcome to Zühlke!
+		</div>
         <calendar></calendar>
+        <temperature-component></temperature-component>
     </body>
     <script src="components/proximity/proximityCtrl.js"></script>
     <script src="components/proximity/proximityService.js"></script>
+    <script src="components/temperature/temperatureCtrl.js"></script>
+    <script src="components/temperature/temperatureService.js"></script>
 </html>
