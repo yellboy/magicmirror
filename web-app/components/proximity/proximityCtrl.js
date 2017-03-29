@@ -1,34 +1,26 @@
 (function () {
-    'use strict'
+	'use strict'
 
-    angular.module('magicmirror').component('proximityParser', {
-        templateUrl: './components/proximity/proximity.html',
-        controller: proximityController,
+	angular.module('magicmirror').component('proximityParser', {
+		templateUrl: './components/proximity/proximity.html',
+		controller: proximityController,
 		transclude: true,
-        bindings: {}
-    });
+		bindings: {}
+	});
 
-    proximityController.$inject = [ '$timeout', 'proximityService' ];
+	proximityController.$inject = ['$timeout', 'proximityService'];
 
-    function proximityController($timeout, proximityService) {
-        var vm = this;
-		
-		vm.shouldDisplayMessage = shouldDisplayMessage;
-		vm.proximity = true;
-		
+	function proximityController($timeout, proximityService) {
+		var vm = this;
+
 		getProximity();
-		
+
 		function getProximity() {
-			proximityService.get().$promise.then(function(data) {
-				vm.proximity = data[0];
-								
-				$timeout(getProximity, 1000);
+			proximityService.getProximity(function (response) {
+				vm.proximity = response;
 				
+				$timeout(getProximity, 1000);
 			});
-		}
-		
-		function shouldDisplayMessage() {
-			return vm.proximity <= 1;
 		}
     }
 })();

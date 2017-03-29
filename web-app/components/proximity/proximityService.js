@@ -2,17 +2,19 @@
     'use strict'
 
     angular
-        .module('magicmirror')
-        .factory('proximityService', proximityService);
+    .module('magicmirror')
+    .factory('proximityService', [
+        '$http', '$rootScope',
+        function ($http, $rootScope) {
+            var service = {};
 
-    proximityService.$inject = ['$resource'];
-
-    function proximityService($resource) {
-        var factory = {};
-        factory.getResource = function () {
-            return $resource('http://localhost:8888/proximity', {});
-        }
-        return factory;
-    }
-
+            service.getProximity = function (callback) {
+                $http.get("http://localhost:8888/proximity", {})
+                    .success(
+                    function (response) {
+                        callback(response);
+                    });
+            };
+            return service;
+        }]);
 })();

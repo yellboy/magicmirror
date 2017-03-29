@@ -8,13 +8,19 @@
         bindings: {}
     });
 
-    temperatureController.$inject = ['TemperatureService'];
+    temperatureController.$inject = ['TemperatureService', '$timeout'];
 
-    function temperatureController(TemperatureService) {
+    function temperatureController(TemperatureService, $timeout) {
         var vm = this;
 
-        TemperatureService.getTemperature(function (response) {
-            vm.temperature = response.temperature;
-        });
+        getTemperature();
+
+        function getTemperature() {
+            TemperatureService.getTemperature(function (response) {
+                vm.temperature = response.temperature;
+
+                $timeout(getTemperature, 5000);
+            });
+        }
     }
 })();
