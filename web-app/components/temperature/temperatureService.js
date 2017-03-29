@@ -1,4 +1,8 @@
-angular.module('magicmirror')
+(function () {
+    'use strict'
+
+    angular
+    .module('magicmirror')
     .factory('TemperatureService', [
         '$http', '$rootScope',
         function ($http, $rootScope) {
@@ -13,3 +17,4 @@ angular.module('magicmirror')
             };
             return service;
         }]);
+})();

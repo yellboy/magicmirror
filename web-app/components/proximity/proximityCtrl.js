@@ -8,21 +8,22 @@
         bindings: {}
     });
 
-    proximityController.$inject = [ '$timeout', '$resource' ];
+    proximityController.$inject = [ '$timeout', 'proximityService' ];
 
-    function proximityController($timeout, $resource) {
+    function proximityController($timeout, proximityService) {
         var vm = this;
 		
 		vm.shouldDisplayMessage = shouldDisplayMessage;
+		vm.proximity = true;
 		
 		getProximity();
 		
 		function getProximity() {
-			$resource('http://localhost:8888/proximity').get({}, function(data) {
+			proximityService.get().$promise.then(function(data) {
 				vm.proximity = data[0];
-				//console.log(data);
-			
+								
 				$timeout(getProximity, 1000);
+				
 			});
 		}
 		
