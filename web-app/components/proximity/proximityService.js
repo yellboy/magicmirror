@@ -8,7 +8,12 @@
    proximityService.$inject = [ '$resource' ];
    
    function proximityService($resource) {
-       return $resource('http://localhost:8888/proximity');
+	var factory = {};
+	factory.getResource = function() {
+	       console.log($resource('http://localhost:8888/proximity'));
+	       return $resource('http://localhost:8888/proximity', {});
+	}
+	return factory;
    }
    
 })();

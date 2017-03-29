@@ -1,14 +1,61 @@
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-127.0.0.1 - - [27/Jan/2017 12:17:36] "GET /temperature HTTP/1.1" 200 -
-127.0.0.1 - - [27/Jan/2017 12:17:38] "GET /favicon.ico HTTP/1.1" 404 -
-127.0.0.1 - - [27/Jan/2017 12:18:27] "GET /temperature HTTP/1.1" 200 -
-127.0.0.1 - - [27/Jan/2017 12:20:54] "GET /temperature HTTP/1.1" 200 -
-127.0.0.1 - - [27/Jan/2017 12:21:05] "GET /temperature HTTP/1.1" 200 -
-127.0.0.1 - - [27/Jan/2017 12:24:28] "GET /temperature HTTP/1.1" 200 -
-127.0.0.1 - - [27/Jan/2017 12:25:35] "GET /temperature HTTP/1.1" 200 -
-127.0.0.1 - - [27/Jan/2017 12:26:05] "GET /temperature HTTP/1.1" 200 -
-127.0.0.1 - - [27/Jan/2017 12:28:15] "GET /temperature HTTP/1.1" 200 -
-127.0.0.1 - - [27/Jan/2017 12:28:41] "GET /temperature HTTP/1.1" 200 -
-127.0.0.1 - - [27/Jan/2017 12:28:42] "GET /favicon.ico HTTP/1.1" 404 -
-127.0.0.1 - - [27/Jan/2017 12:29:54] "GET /temperature HTTP/1.1" 200 -
-127.0.0.1 - - [27/Jan/2017 12:30:17] "GET /temperature HTTP/1.1" 200 -
+Example app listening at http://:::8888
+Listening on port 3000...
+[1:1:0329/132041:FATAL:setuid_sandbox_client.cc(126)] Check failed: IsFileSystemAccessDenied(). 
+#0 0x0000553e8098 base::debug::StackTrace::StackTrace()
+#1 0x0000553fd87c logging::LogMessage::~LogMessage()
+#2 0x000057ff7e50 sandbox::SetuidSandboxClient::ChrootMe()
+#3 0x000057d34aa4 content::ZygoteMain()
+#4 0x0000553b1d4c content::RunZygote()
+#5 0x0000553b3300 content::ContentMainRunnerImpl::Run()
+#6 0x0000553b1acc content::ContentMain()
+#7 0x000054f0ba1c ChromeMain
+#8 0x000075b1e294 __libc_start_main
+
+Received signal 6
+#0 0x0000553e8098 base::debug::StackTrace::StackTrace()
+#1 0x0000553e7fe8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+#2 0x000075b351a0 <unknown>
+#3 0x000075b33f70 gsignal
+[end of stack trace]
+127.0.0.1 - - [29/Mar/2017 13:22:01] "GET /web-app/components/proximity/proximityService.js HTTP/1.1" 200 -
+127.0.0.1 - - [29/Mar/2017 13:22:01] "GET /web-app/components/proximity/proximityCtrl.js HTTP/1.1" 200 -
+127.0.0.1 - - [29/Mar/2017 13:22:03] code 404, message File not found
+127.0.0.1 - - [29/Mar/2017 13:22:03] "GET /favicon.ico HTTP/1.1" 404 -
+_http_outgoing.js:401
+    throw new Error('Can\'t remove headers after they are sent');
+    ^
+
+Error: Can't remove headers after they are sent
+    at ServerResponse.removeHeader (_http_outgoing.js:401:11)
+    at ServerResponse.send (/home/pi/magicmirror/proximity-service/node_modules/express/lib/response.js:194:10)
+    at /home/pi/magicmirror/proximity-service/proximity.js:27:7
+    at /home/pi/node_modules/rpi-gpio/rpi-gpio.js:262:20
+    at tryToString (fs.js:426:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:413:12)
+127.0.0.1 - - [29/Mar/2017 13:22:09] "GET /temperature HTTP/1.1" 200 -
+127.0.0.1 - - [29/Mar/2017 13:22:49] "GET /web-app/ HTTP/1.1" 200 -
+127.0.0.1 - - [29/Mar/2017 13:22:51] "GET /web-app/app.js HTTP/1.1" 200 -
+127.0.0.1 - - [29/Mar/2017 13:22:51] "GET /web-app/components/calendar/calendarComponent.js HTTP/1.1" 200 -
+127.0.0.1 - - [29/Mar/2017 13:22:51] "GET /web-app/css/main.css HTTP/1.1" 200 -
+127.0.0.1 - - [29/Mar/2017 13:22:51] "GET /web-app/components/proximity/proximityCtrl.js HTTP/1.1" 200 -
+127.0.0.1 - - [29/Mar/2017 13:22:51] "GET /web-app/components/proximity/proximityService.js HTTP/1.1" 200 -
+127.0.0.1 - - [29/Mar/2017 13:22:51] "GET /web-app/components/temperature/temperatureCtrl.js HTTP/1.1" 200 -
+127.0.0.1 - - [29/Mar/2017 13:22:51] "GET /web-app/components/temperature/temperatureService.js HTTP/1.1" 200 -
+127.0.0.1 - - [29/Mar/2017 13:23:03] "GET /temperature HTTP/1.1" 200 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 295, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 321, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 657, in __init__
+    self.finish()
+  File "/usr/lib/python2.7/SocketServer.py", line 716, in finish
+    self.wfile.close()
+  File "/usr/lib/python2.7/socket.py", line 279, in close
+    self.flush()
+  File "/usr/lib/python2.7/socket.py", line 303, in flush
+    self._sock.sendall(view[write_offset:write_offset+buffer_size])
+error: [Errno 32] Broken pipe
